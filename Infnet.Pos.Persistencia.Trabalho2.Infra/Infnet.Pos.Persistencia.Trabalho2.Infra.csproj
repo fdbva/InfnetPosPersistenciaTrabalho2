@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{906929B7-3E3C-4F27-A8B9-4174EC4DF711}</ProjectGuid>
+    <ProjectGuid>{9585FCB4-EBD0-474D-AD7F-D9A5EAF11FA2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Infnet.Pos.Persistencia.Trabalho2.Domain</RootNamespace>
-    <AssemblyName>Infnet.Pos.Persistencia.Trabalho2.Domain</AssemblyName>
+    <RootNamespace>Infnet.Pos.Persistencia.Trabalho2.Infra</RootNamespace>
+    <AssemblyName>Infnet.Pos.Persistencia.Trabalho2.Infra</AssemblyName>
     <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,7 +30,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,11 +47,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\Album.cs" />
-    <Compile Include="Entities\Genre.cs" />
-    <Compile Include="Entities\Order.cs" />
-    <Compile Include="Entities\User.cs" />
+    <Compile Include="Mappings\AlbumConfig.cs" />
+    <Compile Include="Mappings\GenreConfig.cs" />
+    <Compile Include="Mappings\OrderConfig.cs" />
+    <Compile Include="Mappings\UserConfig.cs" />
+    <Compile Include="Migrations\201803102000142_Initial.cs" />
+    <Compile Include="Migrations\201803102000142_Initial.Designer.cs">
+      <DependentUpon>201803102000142_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="MusicStoreContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Infnet.Pos.Persistencia.Trabalho2.Domain\Infnet.Pos.Persistencia.Trabalho2.Domain.csproj">
+      <Project>{906929B7-3E3C-4F27-A8B9-4174EC4DF711}</Project>
+      <Name>Infnet.Pos.Persistencia.Trabalho2.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201803102000142_Initial.resx">
+      <DependentUpon>201803102000142_Initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
