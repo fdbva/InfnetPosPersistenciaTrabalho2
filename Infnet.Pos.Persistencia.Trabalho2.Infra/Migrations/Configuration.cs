@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using Infnet.Pos.Persistencia.Trabalho2.Domain.Entities;
+
 namespace Infnet.Pos.Persistencia.Trabalho2.Infra.Migrations
 {
     using System;
@@ -18,6 +21,28 @@ namespace Infnet.Pos.Persistencia.Trabalho2.Infra.Migrations
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
+            var order = new Order
+            {
+                OrderId = 1,
+                User = new User
+                {
+                    UserName = "User1",
+                    Email = "user1@email1.com"
+                },
+                Albums = new List<Album>
+                {
+                    new Album
+                    {
+                        Title = "album1",
+                        Description = "album1Description",
+                        Genre = new Genre
+                        {
+                            Name = "genre1"
+                        }
+                    }
+                }
+            };
+            context.Orders.AddOrUpdate(order);
         }
     }
 }
